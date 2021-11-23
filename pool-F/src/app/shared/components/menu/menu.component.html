@@ -1,0 +1,28 @@
+<button id="menu" mat-button [matMenuTriggerFor]="menu">
+    <mat-icon>drag_indicator</mat-icon>
+</button>
+
+<mat-menu #menu="matMenu">
+    <button mat-menu-item [matMenuTriggerFor]="orden">
+        <mat-icon>ballot</mat-icon>
+        <span>Orden</span>
+    </button>
+    <button mat-menu-item [matMenuTriggerFor]="cliente">
+        <mat-icon>person_outline</mat-icon>
+        <span>Cliente</span>
+    </button>
+</mat-menu>
+
+<mat-menu #orden="matMenu">
+    <button mat-menu-item routerLink="/orden/crear">
+        <mat-icon>label</mat-icon>
+        <span>Crear orden</span>
+    </button>
+</mat-menu>
+
+<mat-menu #cliente="matMenu">
+    <button routerLink="/cliente/listar-ordenes" mat-menu-item>
+        <mat-icon>content_paste</mat-icon>
+        <span>Listar ordenes</span>
+    </button>
+</mat-menu>

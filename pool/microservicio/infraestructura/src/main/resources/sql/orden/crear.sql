@@ -1,0 +1,1 @@
+insert into orden (tiempo_extra, cliente_identificacion) values (:tiempoExtra, :clienteIdentificacion)

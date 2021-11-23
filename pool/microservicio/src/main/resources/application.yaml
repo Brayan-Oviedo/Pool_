@@ -1,0 +1,21 @@
+jasypt:
+   encryptor:
+      password: ${jasyptpwd:secretkey}
+      algorithm: PBEWithMD5AndDES
+
+server:
+   port: 8001
+   servlet:
+      context-path: /pool
+      session:
+         timeout: 21600s
+
+spring:
+   datasource:
+      driver-class-name: org.h2.Driver
+      type: com.zaxxer.hikari.HikariDataSource
+      jdbcUrl: jdbc:h2:mem:~/pool
+      username: ceiba
+      password: WKz7N1hYnd81052ZUZc8x2VXNfDnyNlL
+      hikari:
+         poolName: pool

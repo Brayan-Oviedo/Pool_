@@ -1,0 +1,31 @@
+<mat-dialog-content>
+
+
+    <mat-list>
+
+        <div class="fila">
+            <mat-icon>loyalty</mat-icon>
+            <h2>Ticket {{ ticket.id }}</h2>
+        </div>
+
+        <mat-list-item></mat-list-item>
+
+        <mat-list-item>
+            <mat-icon> attach_money</mat-icon>
+            <h3>{{ ticket.costoTotal }} $</h3>
+        </mat-list-item>
+
+        <mat-list-item>
+            <mat-icon> insert_invitation</mat-icon>
+            <h3>Vence: {{ ticket.fechaVencimiento }}</h3>
+        </mat-list-item>
+
+        <mat-list-item></mat-list-item>
+
+
+        <mat-list-item>
+            <button class="width-100" (click)="cerrar()" mat-stroked-button>Cerrar</button>
+        </mat-list-item>
+    </mat-list>
+
+</mat-dialog-content>

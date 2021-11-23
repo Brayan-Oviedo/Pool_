@@ -1,0 +1,35 @@
+<mat-card>
+
+    <mat-list>
+
+        <div class="fila">
+            <mat-icon>bookmark</mat-icon>
+            <h2>Orden: {{ orden.id }}</h2>
+        </div>
+
+        <mat-list-item></mat-list-item>
+
+        <mat-list-item>
+            <mat-icon>hourglass_full</mat-icon>
+            <h3>Tiempo extra: {{ orden.tiempoExtra }}</h3>
+        </mat-list-item>
+
+        <mat-divider></mat-divider>
+
+        <mat-list-item>
+            <mat-icon>perm_identity</mat-icon>
+            <h3>{{ orden.cliente.identificacion }}</h3>
+        </mat-list-item>
+
+        <mat-list-item>
+            <mat-icon>date_range</mat-icon>
+            <h3>{{ orden.cliente.fechaNacimiento }}</h3>
+        </mat-list-item>
+
+        <mat-divider></mat-divider>
+
+        <mat-list-item>
+            <button class="width-100" color="warn" (click)="doEliminar()" mat-raised-button>Eliminar</button>
+        </mat-list-item>
+    </mat-list>
+</mat-card>

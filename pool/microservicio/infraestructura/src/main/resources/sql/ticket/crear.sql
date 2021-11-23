@@ -1,0 +1,1 @@
+insert into ticket (costo_total, fecha_vencimiento, orden_id) values (:costoTotal, :fechaVencimiento, :ordenId)

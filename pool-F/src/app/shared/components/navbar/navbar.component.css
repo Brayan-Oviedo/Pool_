@@ -1,0 +1,50 @@
+nav {
+  border: 0 solid #e1e1e1;
+  border-bottom-width: 1px;
+  height: 50px;
+  padding: 0 16px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+}
+
+nav h2 {
+  color: #8f8f8f;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 48px;
+  margin-right: 20px;
+}
+
+mat-form-field {
+  padding-top: 0.5vh;
+  width: 30vw;
+  max-width: 210px;
+}
+
+
+
+
+/*++++++++++++  Material Input Color  ++++++++++++*/
+
+::ng-deep .mat-form-field .mat-form-field-label {
+  /** Change label color on label **/
+  color: black !important;
+}
+
+::ng-deep .mat-form-field-underline {
+  /** Change color of underline **/
+  background-color: black !important;
+} 
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+  /** Change label color on focused **/
+  color: black !important;
+}
+
+::ng-deep .mat-focused .mat-form-field-underline .mat-form-field-ripple {
+  /** underline border color on focused **/
+  background-color: black !important;
+}

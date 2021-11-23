@@ -1,0 +1,48 @@
+<body>
+
+    <mat-card  class="width-100">
+        <div class="fila">
+            <mat-card-title>Orden</mat-card-title>
+            <mat-icon>assignment</mat-icon>
+        </div>
+        <span class="espacio"></span>
+        <div class="fila">
+            <mat-icon>info</mat-icon>
+            <mat-card-subtitle id="descripcion">Diligencia todos los datos para recibir tu ticket</mat-card-subtitle>
+        </div>
+    </mat-card>
+
+    <mat-card id="card-formulario" class="width-100">
+        <form [formGroup]="formularioOrden">
+            <div class="formulario">
+
+                <mat-form-field class="width-100">
+                    <mat-label>Tiempo Extra</mat-label>
+                    <input type="number" matInput placeholder="Ingrese el tiempo extra" formControlName="tiempoExtra">
+                </mat-form-field>
+            </div>
+        </form>
+
+        <form [formGroup]="formularioCliente" (ngSubmit)="crear()">
+
+            <div class="formulario">
+
+                <mat-form-field class="width-100">
+                    <mat-label>Identificación</mat-label>
+                    <input type="text" matInput placeholder="Ingresa la identificación" formControlName="identificacion">
+                </mat-form-field>
+    
+                <mat-form-field class="width-100">
+                    <mat-label>Fecha de nacimiento</mat-label>
+                    <input matInput [matDatepicker]="picker" placeHolder="Ingrese la fecha de nacimiento" formControlName="fechaNacimiento">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+    
+                <span class="espacio"></span>
+    
+                <button class="width-100" type="submit" mat-raised-button>Crear</button>
+            </div>
+        </form>
+    </mat-card>
+</body>

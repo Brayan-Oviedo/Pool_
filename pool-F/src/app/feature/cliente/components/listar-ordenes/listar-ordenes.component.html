@@ -1,0 +1,5 @@
+<app-navbar [paginaActual]="titulo" [busqueda]="true" itemBusqueda="Identificación" (buscar)="obtenerOrdenes($event)"></app-navbar>
+
+<div class="contenedor" *ngFor="let orden of ordenes | async">
+    <app-orden-tarjeta [orden]="orden" (eliminar)="eliminarOrden($event)"></app-orden-tarjeta>
+</div>

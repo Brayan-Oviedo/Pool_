@@ -1,0 +1,1 @@
+insert into cliente (identificacion, fecha_nacimiento) values (:identificacion, :fechaNacimiento)

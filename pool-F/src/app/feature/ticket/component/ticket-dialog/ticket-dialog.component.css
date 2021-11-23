@@ -1,0 +1,25 @@
+#informacion {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.fila {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+h2, h3 {
+    margin: auto;
+}
+
+.espacio {
+    height: 5vh;
+}
+
+.width-100 {
+    width: 100%;
+}
