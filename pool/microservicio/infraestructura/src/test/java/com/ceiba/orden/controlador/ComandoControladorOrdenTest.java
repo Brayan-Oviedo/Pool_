@@ -51,7 +51,7 @@ public class ComandoControladorOrdenTest {
     void deberiaProcesarUnaOrden() throws Exception {
 
         // Arrange
-        var cliente = new ComandoClienteTestDataBuilder().conIdentificacion("1007").build();
+        var cliente = new ComandoClienteTestDataBuilder().conIdentificacion("1234567890").build();
         var orden = new ComandoOrdenTestDataBuilder().conCliente(cliente).build();
 
         // Act - Assert
