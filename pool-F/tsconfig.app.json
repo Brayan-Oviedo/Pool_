@@ -23,6 +23,9 @@
       "@cliente/*": [
         "src/app/feature/cliente/*"
       ],
+      "@ticket/*": [
+        "src/app/feature/ticket/*"
+      ],
       "@shared/*": [
         "src/app/shared/*"
       ]

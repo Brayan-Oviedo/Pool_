@@ -10,7 +10,7 @@ public class ClienteTestDataBuilder {
     private LocalDate fechaNacimiento;
 
     public ClienteTestDataBuilder() {
-        this.identificacion = "123";
+        this.identificacion = "1234567890";
         this.fechaNacimiento = LocalDate.now().minusDays(1);
     }
 

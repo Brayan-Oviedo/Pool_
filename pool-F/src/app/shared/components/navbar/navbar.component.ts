@@ -9,7 +9,7 @@ export class NavbarComponent implements OnInit {
 
   @Input() paginaActual: string;
   @Input() busqueda = false;
-  @Input() itemBusqueda: string;
+  @Input() tituloBusqueda: string;
 
   @Output() buscar = new EventEmitter<string>();
 

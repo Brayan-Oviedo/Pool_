@@ -8,7 +8,7 @@ export class ClienteService {
 
   constructor(protected http: HttpService) { }
 
-  public obtenerOrdenesPorCliente(identificacionCliente: string) {
-    return this.http.doGet<Orden[]>(`${environment.endpoint}/ordenes/cliente/${identificacionCliente}`);
+  public obtenerOrdenesPorCliente(identificacion: string) {
+    return this.http.doGet<Orden[]>(`${environment.endpoint}/ordenes/cliente/${identificacion}`);
   }
 }

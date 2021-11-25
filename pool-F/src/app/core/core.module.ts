@@ -10,6 +10,7 @@ import { ManejadorError } from './interceptor/manejador-error';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from './material.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SwalService } from './services/swal.service';
 
 @NgModule({
   declarations: [ToolbarComponent],
@@ -26,6 +27,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   providers: [
     HttpService,
     SecurityGuard,
+    SwalService,
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: ErrorHandler, useClass: ManejadorError }

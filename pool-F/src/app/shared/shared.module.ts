@@ -11,6 +11,7 @@ import { MaterialModule } from '@core/material.module';
 import { MenuComponent } from './components/menu/menu.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RouterModule } from '@angular/router';
+import { FechaService } from './services/fecha.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { RouterModule } from '@angular/router';
     MaterialModule,
     MenuComponent,
     NavbarComponent,
-    TrackByPipe
-  ]
+    TrackByPipe,
+  ],
+  providers: [FechaService]
 })
 export class SharedModule { }

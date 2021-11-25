@@ -2,11 +2,11 @@
   <app-menu></app-menu>
 
   <mat-form-field *ngIf="busqueda">
-    <mat-label>{{ itemBusqueda }}</mat-label>
-    <input type="text" matInput [(ngModel)]="item">
-    <mat-icon matSuffix (click)="doBuscar()">search</mat-icon>
+    <mat-label>{{ tituloBusqueda }}</mat-label>
+    <input id="itemBusqueda" type="text" matInput [(ngModel)]="item">
+    <mat-icon matSuffix (click)="doBuscar()" *ngIf="item" id="botonBusqueda">search</mat-icon>
   </mat-form-field>
 
-  <h2>{{ paginaActual }}</h2>
+  <h2 id="paginaActual">{{ paginaActual }}</h2>
 
 </nav>

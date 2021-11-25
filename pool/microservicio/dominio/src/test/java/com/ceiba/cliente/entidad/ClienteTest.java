@@ -2,6 +2,7 @@ package com.ceiba.cliente.entidad;
 
 import com.ceiba.BasePrueba;
 import com.ceiba.cliente.servicio.testDataBuilder.ClienteTestDataBuilder;
+import com.ceiba.dominio.excepcion.ExcepcionLongitudValor;
 import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
 import com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
 import org.junit.jupiter.api.DisplayName;
@@ -23,12 +24,12 @@ public class ClienteTest {
 
         //Act
         var cliente = new ClienteTestDataBuilder()
-                .conIdentificacion("123")
+                .conIdentificacion("1234567890")
                 .conFechaNacimiento(fechaNacimiento)
                 .build();
 
         // Assert
-        assertEquals("123", cliente.getIdentificacion());
+        assertEquals("1234567890", cliente.getIdentificacion());
         assertEquals(fechaNacimiento, cliente.getFechaNacimiento());
 
     }
@@ -44,6 +45,19 @@ public class ClienteTest {
                 clienteTestDataBuilder.build();
             },
             ExcepcionValorObligatorio.class, "Se debe ingresar la identificación");
+    }
+
+    @Test
+    void deberiaFallarConIdentificacionDelClienteDemasiadoCorta() {
+
+        // Arrange
+        var clienteTestDataBuilder = new ClienteTestDataBuilder().conIdentificacion("123");
+
+        // Act - Assert
+        BasePrueba.assertThrows(() -> {
+                    clienteTestDataBuilder.build();
+                },
+                ExcepcionLongitudValor.class, "La identificación debe tener una longitud minima de 10 digitos");
     }
 
     @Test

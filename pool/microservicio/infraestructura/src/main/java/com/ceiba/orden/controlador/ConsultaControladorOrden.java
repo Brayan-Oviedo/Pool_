@@ -22,6 +22,7 @@ public class ConsultaControladorOrden {
         this.manejadorListarOrdenes = manejadorListarOrdenes;
     }
 
+
     @GetMapping(value="/cliente/{identificacion}")
     @ApiOperation("Listar Ordenes")
     public List<DtoOrden> listar(@PathVariable String identificacion) {

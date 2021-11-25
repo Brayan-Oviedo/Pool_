@@ -20,6 +20,7 @@ describe('OrdenService', () => {
             imports: [HttpClientTestingModule],
             providers: [OrdenService, HttpService]
         });
+    
         httpMock = injector.inject(HttpTestingController);
         service = injector.inject(OrdenService);
     });
@@ -44,8 +45,8 @@ describe('OrdenService', () => {
     it('deberia eliminar una orden', () => {
         const cliente = new Cliente('123', '2001-01-01');
         const orden = new Orden(1, 1, cliente);
-        service.eliminar(orden).subscribe(respuesta => {
-            expect(respuesta).toEqual(true);
+        service.eliminar(orden).subscribe(resultado => {
+            expect(resultado).toEqual(true);
         });
         const req = httpMock.expectOne(`${apiEndpointOrden}/1`);
         expect(req.request.method).toBe('DELETE');

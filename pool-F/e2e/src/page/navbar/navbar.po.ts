@@ -1,10 +1,23 @@
 import { by, element } from 'protractor';
 
 export class NavbarPage {
-    linkHome = element(by.xpath('/html/body/app-root/app-navbar/nav/a[1]'));
-    linkProducto = element(by.xpath('/html/body/app-root/app-navbar/nav/a[2]'));
+    private paginaActual = element(by.id('paginaActual'));
+    private inputBusqueda = element(by.id('itemBusqueda'));
+    private botonBusqueda = element(by.id('botonBusqueda'));
 
-    async clickBotonProductos() {
-        await this.linkProducto.click();
+    async obtenerPaginaActual() {
+        return this.paginaActual.getText();
+    }
+
+    async clickBotonBusqueda() {
+        return this.botonBusqueda.click();
+    }
+
+    async obtenerTextoInputBusqueda() {
+        return this.inputBusqueda.getText();
+    }
+
+    async asignarTextoInputBusqueda(texto: string) {
+        return this.inputBusqueda.sendKeys(texto);
     }
 }

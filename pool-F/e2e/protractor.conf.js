@@ -13,6 +13,7 @@ exports.config = {
   specs: [
     './src/**/*.e2e-spec.ts'
   ],
+  
   capabilities: {
     'browserName': 'chrome'
   },
@@ -28,7 +29,9 @@ exports.config = {
     require('ts-node').register({
       project: require('path').join(__dirname, './tsconfig.json')
     });
+    // @ts-ignore
     jasmine.getEnv().addReporter(new SpecReporter({ spec: { displayStacktrace: true } }));
+    // @ts-ignore
     jasmine.getEnv().addReporter(new HtmlReporter({
       baseDirectory: 'tmp/screenshots'
    }).getJasmine2Reporter());

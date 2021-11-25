@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { SwalService } from '@core/services/swal.service';
 import { Orden } from '@orden/shared/model/orden';
 import { OrdenService } from '@orden/shared/service/orden.service';
+import { FechaService } from '@shared/services/fecha.service';
+import { Ticket } from '@ticket/shared/model/ticket';
 import * as moment from 'moment';
-import { Observable } from 'rxjs';
 import { TicketDialogComponent } from 'src/app/feature/ticket/component/ticket-dialog/ticket-dialog.component';
-import { Ticket } from 'src/app/feature/ticket/shared/model/ticket';
 
 @Component({
   selector: 'app-crear-orden',
@@ -15,64 +16,60 @@ import { Ticket } from 'src/app/feature/ticket/shared/model/ticket';
 })
 export class CrearOrdenComponent implements OnInit {
 
-  formularioOrden: FormGroup;
-  formularioCliente: FormGroup;
+  ordenForm: FormGroup;
+  clienteForm: FormGroup;
+  orden: Orden;
 
 
   constructor(
     protected formBuilder: FormBuilder,
     protected ordenService: OrdenService,
-    protected dialogo: MatDialog
+    protected dialogo: MatDialog,
+    protected swalService: SwalService,
+    protected fechaService: FechaService
   ) { }
 
   ngOnInit(): void {
 
-    this.crearFormularioOrden();
+    this.crearFormularios();
   }
 
   crear() {
-    let orden = this.obtenerOrdenDelFormulario();
-    let ticket = this.ordenService.crear(orden);
-    this.mostrarTicket(ticket);
-  }
-
-
-  private mostrarTicket(ticket: Observable<Ticket>) {
-    ticket.subscribe(
+    this.obtenerOrdenDelFormulario();
+    this.ordenService.crear(this.orden).subscribe(
       ticket => {
-        this.dialogo.open(TicketDialogComponent, { data: ticket });
+        this.swalService.success('Orden creada', '');
+        this.mostrarTicket(ticket);
+      }, fail => {
+        this.swalService.error('No se logro crear el ticket', fail.error.mensaje);
       }
     );
   }
 
-
-  private obtenerOrdenDelFormulario() {
-    let orden: Orden = this.formularioOrden.value;
-    orden.cliente = this.formularioCliente.value;
-    orden.cliente.fechaNacimiento = this.formatearFecha(new Date(orden.cliente.fechaNacimiento));
-    return orden;
+  private mostrarTicket(ticket: Ticket) {
+    this.dialogo.open(TicketDialogComponent, { data: ticket }).afterClosed()
+      .subscribe(() => {
+        this.crearFormularios();
+      });
   }
 
 
-  private crearFormularioOrden() {
-    this.formularioOrden = this.formBuilder.group({
+  private obtenerOrdenDelFormulario() {
+    this.orden = this.ordenForm.value;
+    this.orden.cliente = this.clienteForm.value;
+    this.orden.cliente.fechaNacimiento = this.fechaService.formatearFechaSinHora(moment(this.orden.cliente.fechaNacimiento).toDate());
+  }
+
+
+  private crearFormularios() {
+    this.ordenForm = this.formBuilder.group({
       tiempoExtra: [0, [Validators.required, Validators.max(20)]]
     });
 
-    this.formularioCliente = this.formBuilder.group({
+    this.clienteForm = this.formBuilder.group({
       identificacion: ['', [Validators.required, Validators.minLength(10)]],
-      fechaNacimiento: [this.obtenerFechaActual(), [Validators.required]]
+      fechaNacimiento: [this.fechaService.obtenerFechaActual(), [Validators.required]]
     });
-  }
-
-
-  private obtenerFechaActual() {
-    return this.formatearFecha(moment().toDate());
-  }
-
-  private formatearFecha(fecha: Date) {
-    let fechaNueva = moment(fecha).format('YYYY-MM-DD');
-    return fechaNueva;
   }
 
 }

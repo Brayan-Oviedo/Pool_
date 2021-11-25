@@ -3,25 +3,25 @@
 </button>
 
 <mat-menu #menu="matMenu">
-    <button mat-menu-item [matMenuTriggerFor]="orden">
+    <button mat-menu-item [matMenuTriggerFor]="orden" id="menuOrden">
         <mat-icon>ballot</mat-icon>
         <span>Orden</span>
     </button>
-    <button mat-menu-item [matMenuTriggerFor]="cliente">
+    <button mat-menu-item [matMenuTriggerFor]="cliente" id="menuCliente">
         <mat-icon>person_outline</mat-icon>
         <span>Cliente</span>
     </button>
 </mat-menu>
 
 <mat-menu #orden="matMenu">
-    <button mat-menu-item routerLink="/orden/crear">
+    <button mat-menu-item routerLink="/orden/crear" id="menuCrearOrden">
         <mat-icon>label</mat-icon>
         <span>Crear orden</span>
     </button>
 </mat-menu>
 
 <mat-menu #cliente="matMenu">
-    <button routerLink="/cliente/listar-ordenes" mat-menu-item>
+    <button routerLink="/cliente/listar-ordenes" mat-menu-item id="menuListarOrdenes">
         <mat-icon>content_paste</mat-icon>
         <span>Listar ordenes</span>
     </button>

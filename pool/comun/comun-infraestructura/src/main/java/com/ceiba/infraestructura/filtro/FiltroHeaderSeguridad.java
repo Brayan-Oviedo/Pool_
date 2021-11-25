@@ -22,6 +22,7 @@ public class FiltroHeaderSeguridad implements Filter {
 			throws IOException, ServletException {
 
 		HttpServletResponse httpServletResponse = (HttpServletResponse) response;
+
 		httpServletResponse.setHeader(X_XSS_PROTECTION, "1; mode=block");
 		httpServletResponse.setHeader(X_CONTENT_TYPE_OPTIONS, "nosniff");
 		httpServletResponse.setHeader(PRAGMA, "no-cache");
